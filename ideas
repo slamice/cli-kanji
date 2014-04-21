@@ -1,0 +1,6 @@
+#def remove_kanji(kanji):
+#    stream = open(KANJI_YAML, 'w')
+
+#def reset_ignore_list():
+
+# Command prompt animations per level on success of each character
