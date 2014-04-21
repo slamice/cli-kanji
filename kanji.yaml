@@ -1,13 +1,13 @@
 N5:
-   kanji: '話'
-   Onyomi: WA
-   Kunyomi: hanashi, hana(su)
-   Meaning: speech, to talk, story, conversation
---    kanji: '安'
---        Onyomi: AN
---        Kunyomi: yasu(i)
---        Meaning: peace, cheap, safety
---    kanji: '友'
---        Onyomi: YUU
---        Kunyomi: tomo
---        Meaning: friend
+    - kanji: '話'
+      Onyomi: WA
+      Kunyomi: hanashi, hana(su)
+      Meaning: speech, to talk, story, conversation
+    - kanji: '安'
+      Onyomi: AN
+      Kunyomi: yasu(i)
+      Meaning: peace, cheap, safety
+    - kanji: '友'
+      Onyomi: YUU
+      Kunyomi: tomo
+      Meaning: friend
