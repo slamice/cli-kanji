@@ -27,9 +27,13 @@ def get_random_kanji(level):
     print 'What does '+ char + ' mean?'
     var = raw_input()
 
-    if iequal(var, selection['Meaning']):
-        print '\n-==*== Yes! You got it! ==*==-\n'
-        print_kanji(selection)
+    meanings = (selection['Meaning']).split(',')
+
+    for meaning in meanings:    
+        if iequal(var, meaning):
+            print '\n-==*== Yes! You got it! ==*==-\n'
+            print_kanji(selection)
+            exit()
     else:
         print '\nNo, try another one :( \n'
         print_kanji(selection)
