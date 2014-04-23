@@ -22,7 +22,7 @@ def get_random_kanji(level):
 
     kanji = dataMap[level]
     selection = random.choice(kanji)
-    char = selection['kanji']
+    char = (selection['kanji']).encode('utf8')
 
     print 'What does '+ char + ' mean?'
     var = raw_input()
@@ -47,7 +47,7 @@ def iequal(a, b):
 
 
 def print_kanji(selected):
-    print 'Kanji: '+ selected['kanji']
+    print 'Kanji: '+ (selected['kanji']).encode('utf8')
     print 'Onyomi: '+ selected['Onyomi']
     print 'Kunyomi: '+ selected['Kunyomi']
     print 'Meaning: '+ selected['Meaning']
