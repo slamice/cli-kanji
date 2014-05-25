@@ -1,35 +1,36 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import yaml
 import random
 import argparse
 import pprint
+import json
 
 
-KANJI_YAML = 'kanji.yaml'
-IGNORE_LIST = 'ignore_list.yaml'
+KANJI_JSON = 'kanji.json'
+IGNORE_LIST = 'ignore_list.json'
 
 def random_level():
     return 'N' + str(random.randint(1, 5))
 
-def get_random_kanji(level):
-    f = open(KANJI_YAML, 'r')
-    dataMap = yaml.safe_load(f)
+def get_kanji(level):
+    f = open(KANJI_JSON, 'r')
+    data = json.load(f)
     f.close()
 
     if level == '':
         level = random_level()
 
-    kanji = dataMap[level]
-    selection = random.choice(kanji)
+    selection = random.choice(data[level])
     char = (selection['kanji']).encode('utf8')
 
     print 'What does '+ char + ' mean?'
     var = raw_input()
 
-    meanings = (selection['Meaning']).split(',')
+    meanings = (selection['meaning']).split(',')
 
-    for meaning in meanings:    
+    for meaning in meanings:
+        print var
+        print meaning
         if iequal(var, meaning):
             print '\n-==*== Yes! You got it! ==*==-\n'
             print_kanji(selection)
@@ -45,12 +46,14 @@ def iequal(a, b):
     except AttributeError:
        return a == b
 
+def ignore()
+
 
 def print_kanji(selected):
     print 'Kanji: '+ (selected['kanji']).encode('utf8')
-    print 'Onyomi: '+ selected['Onyomi']
-    print 'Kunyomi: '+ selected['Kunyomi']
-    print 'Meaning: '+ selected['Meaning']
+    print 'Onyomi: '+ selected['onyomi']
+    print 'Kunyomi: '+ selected['kunyomi']
+    print 'Meaning: '+ selected['meaning']
 
 # Get input from user
 if __name__ == '__main__':
@@ -62,10 +65,10 @@ if __name__ == '__main__':
                     help="select JLPT level from  N1|N2|...|N5",
                     default='N5')
 
+    parser.add_argument("ignore", type=str,
+                    help="select kanji or meaning to ignore",
+                    default='')
+
     args = parser.parse_args()
 
-    get_random_kanji(args.level)
-
-# -i adds kanji to ignore list
-# Default fetches random kanji
-# optional: specify Kanji
+    get_kanji(args.level)
